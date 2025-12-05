@@ -1,0 +1,10 @@
+
+services:
+  fastapi-app:
+    build: .
+    container_name: fastapi-clean-arch
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    restart: always

@@ -1,0 +1,2 @@
+class UserIsAdmin(Exception):
+    pass
