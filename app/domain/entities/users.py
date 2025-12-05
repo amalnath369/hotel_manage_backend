@@ -27,8 +27,8 @@ class User(BaseEntity):
         self.role =Role.ADMIN
 
     
-    
-a = User(name="amal",email="a@gmail.com",phone=1234,role=Role.ADMIN,password="asdasd")
+if __name__ == "__main__":   
+    a = User(name="amal",email="a@gmail.com",phone=1234,role=Role.ADMIN,password="asdasd")
 
-print(a.role)
-print(a.is_admin())
+    print(a.role)
+    print(a.is_admin())

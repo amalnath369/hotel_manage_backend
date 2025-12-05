@@ -53,11 +53,12 @@ class Room(BaseEntity):
         self.status = sta
 
 
-a= Room(floor=1,room_number=125,room_type=RoomType.SINGLE,ac_or_non_ac=ACType.AC)
-    
-print(a.floor)
-print(a.ac_or_non_ac)
-print(a.is_active)
-print(a.status)
-a.mark_status("available")
-print(a.status)
+if __name__ == "__main__":
+    a= Room(floor=1,room_number=125,room_type=RoomType.SINGLE,ac_or_non_ac=ACType.AC)
+        
+    print(a.floor)
+    print(a.ac_or_non_ac)
+    print(a.is_active)
+    print(a.status)
+    a.mark_status("available")
+    print(a.status)
