@@ -1,9 +1,24 @@
 from dataclasses import dataclass
 from .base import BaseEntity
+from .users import User
 from .rooms import Room
 from .enums import IDCard,BookingStatus,PaymentStatus,RoomStatus
 from typing import Optional
 from datetime import datetime
+
+
+
+@dataclass(kw_only=True)
+class BlacklistGuest(BaseEntity):
+    name : str
+    email : str
+    phone : int
+    reason : str
+    id_card :  IDCard
+    id_card_num : str
+    id_card_image_path : Optional[str] = None
+    guest_photo_path: Optional[str] = None
+    added_by : User
 
 
 
@@ -27,7 +42,7 @@ class Guest(BaseEntity):
     status : BookingStatus
     payment : PaymentStatus
 
-    guest_photo_path: Optional[str]
+    guest_photo_path: Optional[str] = None
     
 
 
