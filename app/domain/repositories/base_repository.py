@@ -16,7 +16,7 @@ class BaseRepository(ABC, Generic[T]):
         pass
 
     @abstractmethod
-    async def create(self, entity) -> T:
+    async def save(self, entity) -> T:
         pass    
 
     @abstractmethod

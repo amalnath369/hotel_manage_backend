@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from .enums import RoomType,RoomStatus,ACType
 from .base import BaseEntity
-from app.domain.exceptions.rooms_exceptions import RoomAlreadyInStatus
 
 
 @dataclass(kw_only=True)
@@ -29,29 +28,7 @@ class Room(BaseEntity):
             raise TypeError(f"status must be a RoomStatus enum, got {type(self.status)}")
         
     
-    def room_category(self) -> str:
-        return self.room_type.value
     
-    def is_room_ac(self) -> bool:
-        return self.ac_or_non_ac == ACType.AC
-    
-    def make_room_ac(self) -> None:
-        if self.ac_or_non_ac == ACType.AC:
-            return ("Room is already AC")
-        self.ac_or_non_ac = ACType.AC
-
-    def make_room_non_ac(self) -> None:
-        if self.ac_or_non_ac == ACType.NON_AC:
-            return ("Room is already Non Ac")
-        self.ac_or_non_ac = ACType.NON_AC
-
-    def mark_status(self, sta : RoomStatus) -> None:
-        if not isinstance(sta, RoomStatus):
-            raise TypeError(f'Status is not an Roomstatus enum object, got {type(sta)}')
-        if self.status ==  sta:
-            raise RoomAlreadyInStatus("Room is already in that status")
-        self.status = sta
-
 
 if __name__ == "__main__":
     a= Room(floor=1,room_number=125,room_type=RoomType.SINGLE,ac_or_non_ac=ACType.AC)
