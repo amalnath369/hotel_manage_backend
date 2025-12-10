@@ -2,15 +2,15 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .base import BaseEntity
-from .booking import Booking
 from .guests import Guest
+from .booking_room import BookingRoom
 
 
 
 
 @dataclass(kw_only=True)
 class BookingGuest(BaseEntity):
-    booking: Booking
+    booking_room: BookingRoom
     guest: Guest
     is_primary: bool = False     
     id_card_image_path: Optional[str] = None
