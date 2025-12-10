@@ -2,7 +2,7 @@ from app.domain.entities.users import User
 from app.domain.repositories.user_repository import UserRepository
 from app.domain.exceptions.users_exceptions import UserAlreadyExists
 from typing import Optional,List
-from app.auth import hash_password
+from app.core.auth import hash_password
 
 
 class UserServices:
