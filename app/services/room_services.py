@@ -12,14 +12,17 @@ class RoomServices:
 
     async def create_room(self, room_number: str, room_type: RoomType, ac_or_non_ac: ACType, 
                           floor: int, status: Optional[RoomStatus] = RoomStatus.AVAILABLE) -> Room:
-        existing_room = await self.room_repository.get_by_number(room_number)
-        if existing_room:
-            raise ValueError("Room with this number already exists.")
-        
-        room = Room(room_number=room_number, room_type=room_type, 
-                    ac_or_non_ac=ac_or_non_ac, floor=floor, status=status)
-        await self.room_repository.save(room)
-        return room
+        try: 
+            existing_room = await self.room_repository.get_by_number(room_number)
+            if existing_room:
+                raise ValueError("Room with this number already exists.")
+            
+            room = Room(room_number=room_number, room_type=room_type, 
+                        ac_or_non_ac=ac_or_non_ac, floor=floor, status=status)
+            await self.room_repository.save(room)
+            return room
+        except Exception as e:
+            raise e
     
 
     async def room_category(self, room: Room) -> str:
@@ -55,9 +58,14 @@ class RoomServices:
 
      # --- Status Methods ---
     async def mark_status(self, room: Room, new_status: RoomStatus) -> str:
-        if not isinstance(new_status, RoomStatus):
-            raise TypeError(f"new_status must be RoomStatus enum, got {type(new_status)}")
-        if room.status == new_status:
-            raise RoomAlreadyInStatus("Room is already in that status")
-        room.status = new_status
-        return f"Room status updated to {new_status.value}"
+        
+        try:
+            if not isinstance(new_status, RoomStatus):
+                raise TypeError(f"new_status must be RoomStatus enum, got {type(new_status)}")
+            if room.status == new_status:
+                raise RoomAlreadyInStatus("Room is already in that status")
+            room.status = new_status
+            return f"Room status updated to {new_status.value}"
+        
+        except Exception as e:
+            raise e
