@@ -34,7 +34,8 @@ class GuestService:
                 address=address, 
                 id_card_num=id_card_num,
                 id_card_image_path=id_card_image_path,
-                guest_photo_path=guest_photo_path)
+                guest_photo_path=guest_photo_path,
+                is_active=False)
             
             await self.guest_repository.save(guest)
             return guest
