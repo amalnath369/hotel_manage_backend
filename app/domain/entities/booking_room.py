@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from .base import BaseEntity
 from .rooms import Room
 from .booking import Booking
+from typing import Optional
 
 
 
@@ -9,7 +10,6 @@ from .booking import Booking
 class BookingRoom(BaseEntity):
     booking: Booking
     room: Room              
-    room_price: float
     extra_bed: bool = False
 
 

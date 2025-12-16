@@ -16,3 +16,7 @@ class BookingRepository(BaseRepository[Booking]):
 
     async def list_by_check_out_date(self, check_out_date: str) -> list[Booking]:
         pass
+
+
+    async def get_by_status(self, status) -> list[Booking]: 
+        pass

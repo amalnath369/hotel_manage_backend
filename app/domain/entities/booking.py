@@ -14,7 +14,7 @@ class Booking(BaseEntity):
     check_in: datetime
     check_out: datetime
     booking_status: BookingStatus
-    payment_status: PaymentStatus
+    payment_status: PaymentStatus = PaymentStatus.PENDING
 
 
     def __post_init__(self):
