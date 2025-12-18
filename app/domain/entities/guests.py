@@ -18,7 +18,6 @@ class BlacklistGuest(BaseEntity):
     id_card_num : str
     id_card_image_path : Optional[str] = None
     guest_photo_path: Optional[str] = None
-    added_by : User
 
 
 
