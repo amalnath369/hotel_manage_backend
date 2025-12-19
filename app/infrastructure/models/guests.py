@@ -26,3 +26,15 @@ class GuestModel(BaseModel):
 
 
 
+class BlackListGuestModel(BaseModel):
+    __tablename__ = 'black_list'
+
+    name: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
+    email: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
+    phone: Mapped[int] = mapped_column(Integer, nullable=False)
+    reason: Mapped[str] = mapped_column(String(1000), nullable=False)
+
+    id_card: Mapped[IDCard] = mapped_column(Enum(IDCard, name = 'black_list_id_card'), nullable=False)
+    id_card_num: Mapped[str] = mapped_column(String(50), nullable=False)
+    id_card_image_path: Mapped[str] = mapped_column(String(255), nullable=True)
+    guest_photo_path: Mapped[str] = mapped_column(String(255), nullable=True)
