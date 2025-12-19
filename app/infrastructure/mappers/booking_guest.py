@@ -6,7 +6,7 @@ from .booking_room_mapper import  booking_room_model_to_entity
 from .guest_mapper import guest_model_to_entity
 
 
-# ----------------- Model -> Entity -----------------
+# ----------------- Entity -> Model -----------------
 
 def booking_guest_entity_to_model(entity: BookingGuest) -> BookingGuestModel:
     return BookingGuestModel(
@@ -25,9 +25,7 @@ def booking_guest_entity_to_model(entity: BookingGuest) -> BookingGuestModel:
     )
 
 
-# ===============================
-# ORM  →  ENTITY
-# ===============================
+# ----------------- Model -> Entity -----------------
 
 def booking_guest_model_to_entity(model: BookingGuestModel) -> BookingGuest:
     return BookingGuest(
